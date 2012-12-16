@@ -43,11 +43,11 @@
 <body>
 
 <div class="span4">
-	<button class="btn btn-primary" id="THIS">Live Demo</button>
+	<button class="btn btn-primary" id="THIS">Launch an Image</button>
 	<div class="hidden modal" id="THIS-modal">
 		<img src="img/1.jpg" alt="image" />
 	</div>
-	<button class="btn btn-secondary" id="THIS2">View on Github</button>
+	<button class="btn btn-secondary" id="THIS2">Launch a Modal</button>
 	<div class="hidden modal" id="THIS2-modal">
 		<div id="testDiv">
 			<h1>Hello! This is a lightbox!</h1>
@@ -57,40 +57,5 @@
 	</div>
 </div>
 
-<script>
-
-	function createElem(btn){
-		var btnId = btn.id;
-		var modal = document.getElementById(btnId+"-modal");
-		modal.classList.remove("hidden");
-		
-		var lightBox = document.createElement("div");
-			lightBox.className = "lightBox";
-		modal.insertBefore(lightBox, modal.firstChild);
-		var modalChildren = modal.childNodes;
-			
-			for (var x = 0; x<modalChildren.length; x++){
-				if (!(modalChildren[x].className === "lightBox") && (modalChildren[x].style)){
-					var childWidth = modalChildren[x].offsetWidth;
-					var windowWidth = document.body.offsetWidth;
-					var halfWidth = (windowWidth - childWidth) /2;
-					modalChildren[x].style.left = halfWidth + "px";
-					console.log(childWidth + " " + windowWidth+ " " + halfWidth);
-				}
-			}
-		
-		lightBox.onclick = function(){
-			modal.removeChild(lightBox);
-			modal.className = "hidden modal";
-		}
-	}
-	var button = document.getElementsByClassName("btn");
-		for (var i = 0; i<button.length; i++){
-			button[i].onclick = function(){
-				createElem(this);
-			}
-		}
-
-
-</script>
+<script src="lightbox.js"></script>
 </body>
